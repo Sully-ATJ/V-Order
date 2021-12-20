@@ -45,9 +45,26 @@ h2{
     text-decoration: none;
 }
 
-@media screen and (width:700px){
+@media screen and (max-width:700px){
     body{
         background-color: teal;
+    }
+
+    .restaurant-options{
+        display:block;
+        position: relative;
+        width:80%;
+        left:25%;
+        top:7%;
+    }
+
+    .restaurant-option{
+        margin-bottom: 20px;
+    }
+
+
+    .restaurant-option a{
+        font-size: 25px;
     }
 
 }

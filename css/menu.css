@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+}
+
+body{
+    height:100vh;
+    width:100vw;
+    overflow: hidden;
+    display:block;
+    background-color: tomato;
+    color:#000;
+}
+
+.restaurant-info,
+.restaurant-menu{
+    margin: 10px auto;
+    width: 80%;
+    background-color: white;
+}
+
+.menu-item{
+    width:60%;
+    display: flex;
+    background-color: white;
+    margin: 10px auto;
+    padding:10px;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.item-image img{
+    height:100px;
+    width:100px;
+}
+
+.item-price{
+    font-size:25px;
+}

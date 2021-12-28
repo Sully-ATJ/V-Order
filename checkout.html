@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- jQuery and Poppers for modal-->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/index.js"></script>
     <title>Check Out</title>
 </head>
 <body>
-    
+    <h4>Delivery information</h4>
+    <form action="" method="post" class="check-out-form">
+        <div class="row">
+            <input type="text" placeholder="First Name*">
+            <input type="text" placeholder="Last Name*">
+        </div>
+        <div class="row">
+            <input type="text" placeholder="Town/City*">
+            <input type="text" placeholder="Street*">
+        </div>
+        <div class="row">
+            <input type="text" placeholder="Phone Number*">
+            <input type="text" placeholder="Email*">
+        </div>
+        <div class="cart">
+            <table class="your-cart">
+
+            </table>
+            <div>Total price: <span class="total-cart"></span> TL</div>
+        </div>
+    </form>
 </body>
 </html>

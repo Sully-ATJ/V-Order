@@ -10,7 +10,8 @@ html,body{
 body{
     height:100vh;
     width:100vw;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     display:block;
     background-color: tomato;
     color:#000;
@@ -23,6 +24,14 @@ body{
     background-color: white;
 }
 
+.restaurant-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+
 .menu-item{
     width:60%;
     display: flex;
@@ -32,6 +41,12 @@ body{
     border-radius: 5px;
     justify-content: space-evenly;
     align-items: center;
+    cursor: pointer;
+}
+
+.menu-item:hover{
+    width: 63%;
+    transition: 0.3s ease-in-out;
 }
 
 .item-image img{
@@ -42,3 +57,4 @@ body{
 .item-price{
     font-size:25px;
 }
+

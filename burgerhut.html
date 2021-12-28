@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- jQuery and Poppers for modal-->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        
     <link rel="stylesheet" href="css/menu.css">
+    <script src="js/index.js"></script>
     <title>Burger House</title>
 </head>
 <body>
     <div class="restaurant-info">
         <h1>Burger Hut</h1>
+        <div class="nav-btns">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">Cart (<span class="total-count"></span>)</button>
+            <button class="clear-cart btn btn-danger ">Clear Cart</button>
+        </div>
     </div>
     <div class="resturant-menu">
         <div class="menu-item">
@@ -21,8 +36,9 @@
                 <p>A cheese burger</p>
             </div>
             <div class="item-price">
-                30Tl
+                30TL
             </div>
+            <a href="#" data-price="30" data-name="Cheese burger" class="add-to-cart btn btn-primary">Add to cart</a>
         </div>
         <div class="menu-item">
             <div class="item-image">
@@ -33,8 +49,9 @@
                 <p>A Double cheese burger</p>
             </div>
             <div class="item-price">
-                40Tl
+                40TL
             </div>
+            <a href="#" data-price="40" data-name="Double Cheese burger" class="add-to-cart btn btn-primary">Add to cart</a>
         </div>
         <div class="menu-item">
             <div class="item-image">
@@ -45,8 +62,9 @@
                 <p>A FiSh burger</p>
             </div>
             <div class="item-price">
-                40Tl
+                40TL
             </div>
+            <a href="#" data-price="40" data-name="Fish Burger" class="add-to-cart btn btn-primary">Add to cart</a>
         </div>
         <div class="menu-item">
             <div class="item-image">
@@ -57,8 +75,9 @@
                 <p>A Chicken burger</p>
             </div>
             <div class="item-price">
-                35Tl
+                35TL
             </div>
+            <a href="#" data-price="35" data-name="Chicken Burger" class="add-to-cart btn btn-primary">Add to cart</a>
         </div>
         <div class="menu-item">
             <div class="item-image">
@@ -69,10 +88,36 @@
                 <p>A Vegan burger</p>
             </div>
             <div class="item-price">
-                70Tl
+                70TL
             </div>
+            <a href="#" data-price="70" data-name="Vegan Burger" class="add-to-cart btn btn-primary">Add to cart</a>
         </div>
         
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="show-cart table">
+                
+                </table>
+                <div>Total price: <span class="total-cart"></span> TL</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Order now</button>
+            </div>
+            </div>
+        </div>
+    </div> 
+
 </body>
 </html>

@@ -19,14 +19,15 @@ var shoppingCart = (function() {
     
     // Save cart
     function saveCart() {
-      localStorage.setItem('shoppingCart', JSON.stringify(cart));
+      sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
     }
     
       // Load cart
     function loadCart() {
-      cart = JSON.parse(localStorage.getItem('shoppingCart'));
+      cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
     }
-    if (localStorage.getItem("shoppingCart") != null) {
+
+    if (sessionStorage.getItem("shoppingCart") != null) {
       loadCart();
     }
     
@@ -159,8 +160,12 @@ var shoppingCart = (function() {
   // Check out items
   $('.check-out').click(function(){
     window.location.href='checkout.html';
-    displayCart();
-    //checkOutCart();
+    checkOutCart();
+  });
+
+  //Send Order
+  $('.send-order').click(function(){
+    window.location.href='sendorder.html';
   });
   
   
@@ -188,23 +193,16 @@ var shoppingCart = (function() {
   function checkOutCart(){
     var cartArray = shoppingCart.listCart();
     var output = "";
-    output += cartArray;
-    /*for(var i in cartArray) {
+    for(var i in cartArray) {
         output += "<tr>"
           + "<td>" + cartArray[i].name + "</td>" 
-          + "<td>(" + cartArray[i].price + ")</td>"
-          + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name=" + cartArray[i].name + ">-</button>"
-          + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
-          + "<button class='plus-item btn btn-primary input-group-addon' data-name=" + cartArray[i].name + ">+</button></div></td>"
-          + "<td><button class='delete-item btn btn-danger' data-name=" + cartArray[i].name + ">X</button></td>"
-          + " = " 
-          + "<td>" + cartArray[i].total + "</td>" 
+          + "<td>Price: " + cartArray[i].price + "TL</td>"
+          + "<td> Total Price: " + cartArray[i].total + "TL</td>" 
           +  "</tr>";
-      }*/
-
+      }
+  
     $('.your-cart').html(output);
     $('.total-cart').html(shoppingCart.totalCart());
-    $('.total-count').html(shoppingCart.totalCount());
   }
   
   // Delete item button
@@ -239,4 +237,5 @@ var shoppingCart = (function() {
   });
   
   displayCart();
+  checkOutCart();
 }); 

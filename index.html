@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/home.css">
+    <script src="js/speechtotext.js"></script>
     <title>V-Order | Home</title>
 </head>
 <body>
     <h2>V-Order</h2>
     <div class="restaurant-options">
         <div class="restaurant-option">
-            <a href="hotnspicy.html">Hot n' Spicy</a> 
+            <a href="hotnspicy.html">Hot N' Spicy</a> 
         </div>
         <div class="restaurant-option">
             <a href="raphaellos.html">Raphaellos</a>
@@ -23,6 +33,14 @@
             <a href="pizzaplex.html">PizzaPlex</a>
         </div>
     </div>
+    <div class="form-group" style="padding: 5px 20%">
+        <textarea  id="textbox" rows="10" class="form-control"></textarea>
+    </div>
+    <div class="form-group text-center">
+        <button type="button" id="start-btn" class="btn btn-default" >Start Listening<i class="fa fa-microphone" style="font-size:56px"></i></button>
+        <p id="instructions">Press the Start button</p>
+    </div>
+    
     <div class="footer">
 
     </div>

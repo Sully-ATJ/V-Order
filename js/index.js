@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+
+  
+
 // ************************************************
 // Shopping Cart API
 // ************************************************
@@ -136,7 +139,7 @@ var shoppingCart = (function() {
     // saveCart : Function
     // loadCart : Function
     return obj;
-  })();
+})();
   
   
   // *****************************************
@@ -176,13 +179,14 @@ var shoppingCart = (function() {
       output += "<tr>"
         + "<td>" + cartArray[i].name + "</td>" 
         + "<td>(" + cartArray[i].price + ")</td>"
-        + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name=" + cartArray[i].name + ">-</button>"
+        + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name='" + cartArray[i].name + "'>-</button>"
         + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
-        + "<button class='plus-item btn btn-primary input-group-addon' data-name=" + cartArray[i].name + ">+</button></div></td>"
-        + "<td><button class='delete-item btn btn-danger' data-name=" + cartArray[i].name + ">X</button></td>"
+        + "<button class='plus-item btn btn-primary input-group-addon' data-name='" + cartArray[i].name + "'  data-price="+ cartArray[i].price +"'>+</button></div></td>"
+        + "<td><button class='delete-item btn btn-danger' data-name='" + cartArray[i].name + "'>X</button></td>"
         + " = " 
         + "<td>" + cartArray[i].total + "</td>" 
         +  "</tr>";
+        //console.log($('.minus-item').data('name'));
     }
     $('.show-cart').html(output);
     $('.total-cart').html(shoppingCart.totalCart());
@@ -238,4 +242,107 @@ var shoppingCart = (function() {
   
   displayCart();
   checkOutCart();
+
+  // ************************************************
+  // Web Speech API Speech Recognition
+  // ************************************************
+
+  var speechRecognition = window.webkitSpeechRecognition;
+
+    var recognition = new speechRecognition();
+
+    var textbox = $("#textbox");
+    var instructions = $("#instructions");
+
+    var content = '';
+
+    recognition.continuous = true;
+
+    //when speech is detected
+
+    recognition.onstart = function(){
+        instructions.text("Voice Recognition is on");
+    }
+
+
+    //If you go long without saying anything
+    recognition.onspeechend = function(){
+        instructions.text("No Activity");
+    }
+
+
+    //On error with recognition
+    recognition.onerror = function(){
+        instructions.text("Try Again");
+    }
+
+    recognition.onresult = function(event){
+        var current  = event.resultIndex;
+
+        var transcript = event.results[current][0].transcript;
+
+        content += transcript;
+        textbox.val(content);
+        console.log(transcript);
+
+        if ((transcript == 'add chicken burger')
+              || (transcript == ' add chicken burger')
+              ) {
+            $('#add-chicken-burger').trigger('click');
+        }
+        else if((transcript == 'add cheese burger')
+              || (transcript == ' add cheese burger')){
+          $('#add-cheese-burger').trigger('click');
+        }
+        else if((transcript == 'add double cheese burger')
+              || (transcript == ' add double cheese burger')
+              || (transcript == ' add double cheeseburger')){
+          $('#add-double-cheese-burger').trigger('click');
+        }
+        else if((transcript == 'add fish burger')
+              || (transcript == ' add fish burger')){
+          $('#add-fish-burger').trigger('click');
+        }
+        else if((transcript == 'add vegan burger')
+              || (transcript == ' add vegan burger')){
+          $('#add-vegan-burger').trigger('click');
+        }
+        else if((transcript == 'open cart')
+              || (transcript == ' open cart')
+              || (transcript == ' opencart')
+              || (transcript == 'opencart')){
+          $('#open-cart').trigger('click');
+        }
+        else if((transcript == 'clear the cart')
+              || (transcript == ' clear the cart')){
+          $('.clear-cart').trigger('click');
+        }
+        else if((transcript == 'close cart')
+              || (transcript == ' close cart')
+              || (transcript == ' close')
+              || (transcript == 'close')
+              || (transcript == 'Close')
+              || (transcript == ' Close')
+              || (transcript == ' close the cart')
+              || (transcript == 'close the cart')){
+          $('#close-btn').trigger('click');
+        }
+        else if((transcript == 'checkout')
+              || (transcript == ' checkout')
+              || (transcript == ' Checkout')
+              || (transcript == ' go to checkout')
+              || (transcript == ' go to check out')
+              || (transcript == ' Go to checkout')){
+          $('.check-out').trigger('click');
+        }
+
+    }
+
+    $("#start-btn").click(function(event){
+        if(content.length){
+            content += '';
+        }
+
+        recognition.start();
+    });
 }); 

@@ -11,12 +11,13 @@ body{
     height:100vh;
     width:100vw;
     overflow: hidden;
-    background-color: burlywood;
+    background-color: tomato;
     display: block;
 }
 
 h2{
     text-align: center;
+    color: white;
 }
 
 .restaurant-options{
@@ -30,7 +31,7 @@ h2{
 }
 
 .restaurant-option{
-    color:white;
+    background-color:white;
     border: 1px solid white;
     border-radius: 5px;
     width: 180px;
@@ -43,6 +44,7 @@ h2{
 .restaurant-option a{
     font-size: 20px;
     text-decoration: none;
+    color:black;
 }
 
 @media screen and (max-width:700px){

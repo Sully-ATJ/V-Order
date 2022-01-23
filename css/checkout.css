@@ -13,13 +13,54 @@ body{
     overflow-x: hidden;
     overflow-y: scroll;
     display:block;
-    background-color: #fff;
+    background-color: tomato;
     color:#000;
 }
 
 .check-out-form{
     padding: 30px;
 }
+
+.restaurant-info,
+.restaurant-menu{
+    margin: 10px auto;
+    width: 80%;
+    background-color: white;
+}
+
+.restaurant-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+input[type="text"]{
+    margin: 15px auto;
+    width:30%;
+}
+
+.your-cart td{
+    background-color: white;
+    
+}
+
+.send-order{
+    width: 125px;
+    height: 45px;
+    background: green;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    line-height: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
+}
+
+
 
 /*-------------------------------------------sendorder.html page---------------------------------------*/
 
@@ -52,16 +93,4 @@ body{
 }
 
 
-.btn{
-    
-    width: 115px;
-    height: 25px;
-    background: green;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    color: white;
-    line-height: 25px;
-    text-decoration: none;
-    text-transform: uppercase;
-}
+

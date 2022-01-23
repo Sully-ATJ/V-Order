@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+
+  // ************************************************
+  // Web Speech API Speech Recognition
+  // ************************************************
+
     var speechRecognition = window.webkitSpeechRecognition;
 
     var recognition = new speechRecognition();
@@ -32,6 +37,35 @@ $(document).ready(function(){
 
         content += transcript;
         textbox.val(content);
+
+        if ((transcript == 'Burger Hut') 
+            || (transcript == 'burger hut')
+            || (transcript == 'burger Hut')){
+            window.location.href='burgerhut.html';
+        }
+        else if ((transcript == "Hot And Spicy") 
+            || (transcript == 'hot and spicy') 
+            || (transcript == 'Hot and spicy') 
+            || (transcript == 'hot and Spicy')
+            || (transcript == 'hot And spicy')
+            || (transcript == 'Hot And spicy')
+            || (transcript == 'hot And Spicy')) {
+            window.location.href='hotnspicy.html';
+        }
+        else if ((transcript == 'Pizza Plex') 
+            || (transcript == 'pizza plex')
+            || (transcript == 'pizza Plex')
+            || (transcript == 'Pizza plex')
+            || (transcript == 'pizzaplex')
+            || (transcript == 'PizzaPlex')) {
+            window.location.href='pizzaplex.html';
+        }
+        else if (transcript == 'Raphaellos') {
+            window.location.href='raphaellos.html';
+        }
+        else  {
+            instructions.text("Not a valid option");
+        }
     }
 
     $("#start-btn").click(function(event){

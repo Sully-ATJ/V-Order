@@ -263,7 +263,28 @@ $(document).ready(function(){
             textbox.val(content);
             console.log(transcript);
             
-            if (!$('#name').val()) {
+            if ((transcript == "clear name")
+                    || (transcript == " clear name")
+                    || (transcript == " Clear name")
+                    || (transcript == " clear Name")
+                    || (transcript == " Clear Name")) {
+                      $('#name').val("");
+            }
+            else if ((transcript == "clear address")
+                    || (transcript == " clear address")
+                    || (transcript == " Clear address")
+                    || (transcript == " clear Address")
+                    || (transcript == " Clear Address")) {
+                      $('#address').val("");
+            }
+            else if ((transcript == "clear number")
+                    || (transcript == " clear number")
+                    || (transcript == " Clear number")
+                    || (transcript == " clear Number")
+                    || (transcript == " Clear Number")) {
+                      $('#phone-no').val("");
+            }
+            else if (!$('#name').val()) {
                 $('#name').val(transcript);
             }
             else if (!$('#address').val()) {

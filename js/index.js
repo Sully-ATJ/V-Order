@@ -151,24 +151,40 @@ var shoppingCart = (function() {
     var name = $(this).data('name');
     var price = Number($(this).data('price'));
     shoppingCart.addItemToCart(name, price, 1);
+	speak(name,price,1);
     displayCart();
   });
   
   // Clear items
   $('.clear-cart').click(function() {
     shoppingCart.clearCart();
+	speak("","",2);
     displayCart();
   });
 
+	// dispaly-cart
+  $('.display-cart').click(function() {
+	var cartArray = shoppingCart.listCart();
+	speakCart(cartArray);
+  });
+  
+  // read-menu
+  $('.read-menu').click(function() {
+    speakMenu();
+  });
+  
   // Check out items
   $('.check-out').click(function(){
     window.location.href='checkout.html';
+	speak("","",7); 
     checkOutCart();
   });
 
   //Send Order
   $('.send-order').click(function(){
     window.location.href='sendorder.html';
+	console.log("here");
+	speak("","",6);
   });
   
   
@@ -214,6 +230,7 @@ var shoppingCart = (function() {
   $('.show-cart').on("click", ".delete-item", function(event) {
     var name = $(this).data('name')
     shoppingCart.removeItemFromCartAll(name);
+	speak(name,"",5);
     displayCart();
   });
   
@@ -222,6 +239,7 @@ var shoppingCart = (function() {
   $('.show-cart').on("click", ".minus-item", function(event) {
     var name = $(this).data('name')
     shoppingCart.removeItemFromCart(name);
+	speak(name,"",4);
     displayCart();
   });
 
@@ -229,6 +247,7 @@ var shoppingCart = (function() {
   $('.show-cart').on("click", ".plus-item", function(event) {
     var name = $(this).data('name')
     shoppingCart.addItemToCart(name);
+	speak(name,"",3);
     displayCart();
   });
   
@@ -287,30 +306,39 @@ var shoppingCart = (function() {
 
         if ((transcript == 'add chicken burger')
               || (transcript == ' add chicken burger')
+              || (transcript == ' chicken burger')
               ) {
             $('#add-chicken-burger').trigger('click');
         }
         else if((transcript == 'add cheese burger')
-              || (transcript == ' add cheese burger')){
+              || (transcript == ' add cheese burger')
+              || (transcript == ' cheese burger')
+              ){
           $('#add-cheese-burger').trigger('click');
         }
         else if((transcript == 'add double cheese burger')
               || (transcript == ' add double cheese burger')
-              || (transcript == ' add double cheeseburger')){
+              || (transcript == ' add double cheeseburger')
+              || (transcript == ' double cheeseburger')
+              ){
           $('#add-double-cheese-burger').trigger('click');
         }
         else if((transcript == 'add fish burger')
-              || (transcript == ' add fish burger')){
+              || (transcript == ' add fish burger')
+              || (transcript == ' fish burger')
+              ){
           $('#add-fish-burger').trigger('click');
         }
         else if((transcript == 'add vegan burger')
-              || (transcript == ' add vegan burger')){
+              || (transcript == ' add vegan burger')
+              || (transcript == ' vegan burger')
+              ){
           $('#add-vegan-burger').trigger('click');
         }
         else if((transcript == 'open cart')
               || (transcript == ' open cart')
               || (transcript == ' opencart')
-              || (transcript == 'opencart')){
+              || (transcript == ' open')){
           $('#open-cart').trigger('click');
         }
         else if((transcript == 'clear the cart')
@@ -330,12 +358,17 @@ var shoppingCart = (function() {
         else if((transcript == 'checkout')
               || (transcript == ' checkout')
               || (transcript == ' Checkout')
+			        || (transcript == ' Check out')
+			        || (transcript == ' check out')
               || (transcript == ' go to checkout')
               || (transcript == ' go to check out')
               || (transcript == ' Go to checkout')){
           $('.check-out').trigger('click');
         }
-
+		else if((transcript == 'read menu')
+              || (transcript == 'menu')){
+          $('.read-menu').trigger('click');
+        }
     }
 
     $("#start-btn").click(function(event){
@@ -345,4 +378,128 @@ var shoppingCart = (function() {
 
         recognition.start();
     });
+	
+	//-------------------------------------------------//
+	// ************************************************
+	// Web Speech API Speech Recognition
+	// ************************************************
+	var synth = window.speechSynthesis;
+
+	function speak(name,price,flag){
+		if (synth.speaking) {
+			console.error('speechSynthesis.speaking');
+			return;
+		}
+		var speech;
+		
+		if (flag === 1)
+			speech = "A " + name + "with price" + price + "Turkish Lira Has been added to the cart";
+		else if (flag === 2)
+			speech = "The Cart is Empty now";
+		else if (flag === 3)
+			speech = "A" + name + "has been added to the cart";
+		else if (flag === 4)
+			speech = "A" + name + "has been removed from the cart";
+		else if (flag === 5)
+			speech = "All" + name + "S have been removed from the cart";
+		else if (flag === 6)
+			speech = "Your Order has been made";
+		else if (flag === 7)
+			speech = "Please fill in the necessary information to complete the order";
+		
+		
+		var utterThis = new SpeechSynthesisUtterance(speech);
+		utterThis.onend = function (event) {
+			console.log('SpeechSynthesisUtterance.onend');
+		}
+		utterThis.onerror = function (event) {
+			console.error('SpeechSynthesisUtterance.onerror');
+		}
+		// var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
+		// for(i = 0; i < voices.length ; i++) {
+		  // if(voices[i].name === selectedOption) {
+			// utterThis.voice = voices[i];
+			// break;
+		  // }
+		// }
+		utterThis.pitch = 1;
+		utterThis.rate = 1;
+		synth.speak(utterThis);	
+	}
+
+
+	function speakCart(list){
+		if (synth.speaking) {
+			console.error('speechSynthesis.speaking');
+			return;
+		}
+		//console.log(name,price,count,flag);
+		var speech;
+		
+		var utterThis = new SpeechSynthesisUtterance("Your cart has the following Items");
+		utterThis.pitch = 1;
+		utterThis.rate = 1;
+		synth.speak(utterThis);
+		
+		for (var i in list)
+		{
+			speech = list[i].count + list[i].name + "with price" + list[i].total + "Turkish Lira";
+			utterThis = new SpeechSynthesisUtterance(speech);
+		
+		
+			utterThis.onend = function (event) {
+				console.log('SpeechSynthesisUtterance.onend');
+			}
+			utterThis.onerror = function (event) {
+				console.error('SpeechSynthesisUtterance.onerror');
+			}
+		
+			utterThis.pitch = 1;
+			utterThis.rate = 1;
+			synth.speak(utterThis);
+		}
+		var total = shoppingCart.totalCart();
+		speech = "The total you need to pay is" + total + "Turkish Lira" + "Click on checkout to proceed";
+		var utterThis = new SpeechSynthesisUtterance(speech);
+		utterThis.pitch = 1;
+		utterThis.rate = 1;
+		synth.speak(utterThis);
+	}
+	
+	function speakMenu() {
+			
+		if (synth.speaking) {
+		console.error('speechSynthesis.speaking');
+		return;
+		}	
+		
+		var menu = ['Welcome to Burger Hut',
+				'The menu of our restaurant is as follows',
+				'Cheese Burger with price 30 Turkish Lira',
+				'Double Cheese Burger with price 40 Turkish Lira',
+				'Fish Burger with price 40 Turkish Lira',
+				'Chicken Burger with price 35 Turkish Lira',
+				'Vegan Burger with price 70 Turkish Lira'];
+		for (var i in menu)
+		{
+			
+			var speech = menu[i];
+			
+			var utterThis = new SpeechSynthesisUtterance(speech);
+
+
+			utterThis.onend = function (event) {
+				console.log('SpeechSynthesisUtterance.onend');
+			}
+			utterThis.onerror = function (event) {
+				console.error('SpeechSynthesisUtterance.onerror' + event.error);
+			}
+			console.log(menu[i]);
+			utterThis.pitch = 1;
+			utterThis.rate = 1;
+			synth.speak(utterThis);
+		}
+	}
+
+//-------------------------------------------------//
 }); 

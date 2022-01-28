@@ -15,7 +15,7 @@ body{
     display: block;
 }
 
-h2{
+h2,h4{
     text-align: center;
     color: white;
 }

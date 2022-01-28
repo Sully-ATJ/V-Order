@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" href="css/checkout.css">
     <script src="js/checkout.js"></script>
+    <script src="js/samehCode.js"></script>
     <title>Check Out</title>
 </head>
 <body>
@@ -30,9 +31,10 @@
             <p id="instructions">Press the Start button</p>
         </div>
     </div>
+    <!--
     <div class="form-group" style="padding: 5px 20%">
         <textarea  id="textbox" rows="10" class="form-control"></textarea>
-    </div>
+    </div>-->
     <form action="" method="post" class="check-out-form">
         <div class="row">
             <input id="name" type="text" placeholder="Name*">
@@ -47,7 +49,7 @@
             <table class="your-cart table">
                 
             </table>
-            <div>Total price: <span class="total-cart"></span> TL</div>
+            <div class="total-price">Total price: <span class="total-cart"></span> TL</div>
         </div>
         <button type="button" class="btn btn-primary send-order">Order Now</button>
     </form>

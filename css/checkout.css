@@ -38,11 +38,18 @@ body{
 input[type="text"]{
     margin: 15px auto;
     width:30%;
+    border-radius: 5px;
+    padding: 4px;
 }
 
 .your-cart td{
     background-color: white;
     
+}
+
+.total-price{
+    background-color: white;
+    padding:5px;
 }
 
 .send-order{
@@ -57,9 +64,13 @@ input[type="text"]{
     text-decoration: none;
     text-transform: uppercase;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
 }
-
+#start-btn{
+    background-color: dimgrey;
+    color:white;
+    cursor:pointer;
+}
 
 
 /*-------------------------------------------sendorder.html page---------------------------------------*/
@@ -82,15 +93,26 @@ input[type="text"]{
 
 .upper-card{
     background-color: green;
-    height:70%;
+    height:280px;
     text-align: center;
     color:white;
+}
+
+.lower-card{
+    background-color: white;
+    height:135px;
+    margin-top: -18px;
+    padding-top: 7%;
 }
 
 .upper-card *{
     display: block;
     padding-top: 20%;
 }
+
+
+
+
 
 
 
